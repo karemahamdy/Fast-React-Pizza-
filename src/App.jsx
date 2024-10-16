@@ -5,10 +5,12 @@ import Menu, { Loader as menuDataLoader} from  "./features/menu/Menu"
 import Cart from './features/cart/Cart';
 import Order from "./features/order/Order"
 import CreateOrder from './features/order/CreateOrder';
+import Error  from "./ui/Error"
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />,
 
     children: [
   {
@@ -18,7 +20,8 @@ const router = createBrowserRouter([
   {
     path: '/menu',
     element: <Menu />,
-    loader: menuDataLoader
+    loader: menuDataLoader,
+    errorElement: <Error />,
   },
   { path: '/cart', element: <Cart /> },
   {
@@ -29,6 +32,7 @@ const router = createBrowserRouter([
   {
     path: '/order/:orderId',
     element: <Order />,
+    errorElement: <Error />,
   },
     ],
   },
