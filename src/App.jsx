@@ -3,8 +3,8 @@ import AppLayout from "./ui/AppLayout"
 import Home from './ui/Home';
 import Menu, { Loader as menuDataLoader} from  "./features/menu/Menu"
 import Cart from './features/cart/Cart';
-import Order from "./features/order/Order"
-import CreateOrder from './features/order/CreateOrder';
+import Order , {Loader as orderLoader} from "./features/order/Order"
+import CreateOrder , {action as createOrderAction} from './features/order/CreateOrder';
 import Error  from "./ui/Error"
 
 const router = createBrowserRouter([
@@ -27,12 +27,14 @@ const router = createBrowserRouter([
   {
     path: '/order/new',
     element: <CreateOrder />,
-    
+    action: createOrderAction
   },
   {
+    
     path: '/order/:orderId',
     element: <Order />,
     errorElement: <Error />,
+    loader: orderLoader,
   },
     ],
   },
