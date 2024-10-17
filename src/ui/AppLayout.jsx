@@ -12,8 +12,8 @@ function AppLayout() {
       {loading && <Loader />}
 
       <Header />
+      <main className="mx-auto max-w-3xl">
       <Outlet />
-      <main>
         <CartOverview />
       </main>
 
