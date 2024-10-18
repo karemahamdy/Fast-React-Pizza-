@@ -1,6 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom"
 import Header from "./Header"
-import CartOverview from '../features/cart/CartOverview';
+
 import Loader from "./Loader";
 
 function AppLayout() {
@@ -14,7 +14,7 @@ function AppLayout() {
       <Header />
       <main className="mx-auto max-w-3xl">
       <Outlet />
-        <CartOverview />
+      
       </main>
 
     </>
