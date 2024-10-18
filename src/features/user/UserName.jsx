@@ -1,9 +1,10 @@
-
+import { useSelector } from "react-redux"
 
 function User() {
+const username = useSelector((state) => state.user.username)
   return (
     <>
-     <h1 className="font-semibold ">karema</h1>
+     <h1 className="font-semibold ">{username}</h1>
     </>
   )
 }
