@@ -1,7 +1,7 @@
 import { Outlet, useNavigation } from "react-router-dom"
 import Header from "./Header"
-
 import Loader from "./Loader";
+import CartOverview from "../features/cart/CartOverview";
 
 function AppLayout() {
   const navigation = useNavigation()
@@ -14,9 +14,9 @@ function AppLayout() {
       <Header />
       <main className="mx-auto max-w-3xl">
       <Outlet />
-      
-      </main>
 
+      </main>
+      <CartOverview/>
     </>
   )
 }
