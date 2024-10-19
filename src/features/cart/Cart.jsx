@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import Button from "../../ui/Button"
 import { useSelector } from 'react-redux';
+import CartItem from './CartItem';
+import { getCart } from './CartSlice';
 
 const fakeCart = [
   {
@@ -27,8 +29,9 @@ const fakeCart = [
 ];
 
 function Cart() {
-  const username = useSelector((state) => state.user.username)
-  const cart = fakeCart;
+  const username = useSelector((state) => state.user.username);
+  const cart = useSelector(getCart);
+  
 
   return (
     <div className="py-2 px-">
@@ -39,7 +42,7 @@ function Cart() {
 
         <ul className="mt-3 divide-y divide-stone-200 border-b">
         {cart.map((item) => (
-          <li key={item.pizzaId} >{item.name}</li>
+          <CartItem item={item} key={item.pizzaId} />
         ))}
       </ul>
       <div className="mt-6 space-x-2">
