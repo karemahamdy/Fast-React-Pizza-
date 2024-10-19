@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
-import { getCurrentQuantityById } from "./CartSlice";
+import { getCurrentQuantityById, deleteItem } from "./CartSlice";
 
 
 function CartItem({ item }) {
+  const dispatch = useDispatch()
   const { pizzaId, name, quantity, totalPrice } = item;
   const currentQuantity = useSelector(getCurrentQuantityById(pizzaId));
   return (
@@ -16,8 +17,8 @@ function CartItem({ item }) {
         <p className="text-sm font-bold">{formatCurrency(totalPrice)}
         {currentQuantity}
         </p>
-        <Button to="/order/new" type="small">
-          Order pizzas
+        <Button  type="small" onClick={() => dispatch(deleteItem(pizzaId))}>
+        Delete
         </Button>
       </div>
     </li>
