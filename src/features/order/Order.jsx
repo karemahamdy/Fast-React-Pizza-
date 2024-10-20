@@ -45,7 +45,6 @@ const order = {
 
 function Order() {
   const order = useLoaderData();
-  console.log(order)
   const {
     id,
     status,
