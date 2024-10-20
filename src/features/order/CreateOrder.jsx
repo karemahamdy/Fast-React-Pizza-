@@ -4,7 +4,8 @@ import { createOrder } from '../../services/apiRestaurant';
 import Button from '../../ui/Button';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
-import { getCart, getTotalCartPrice } from "../cart/CartSlice";
+import { clearCart, getCart, getTotalCartPrice } from "../cart/CartSlice";
+import store from '../../store';
 
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -90,7 +91,7 @@ export async function action({ request }) {
 
   const newOrder = await createOrder(order);
 
-
+  store.dispatch(clearCart());
 
   return redirect(`/order/${newOrder.id}`);
 
