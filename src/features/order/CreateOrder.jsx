@@ -6,13 +6,14 @@ import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { getCart, getTotalCartPrice } from "../cart/CartSlice";
 
-// https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
     str
   );
 
 function CreateOrder() {
+  const username = useSelector((state) => state.user.username)
+
   const [withPriority, setWithPriority] = useState(false);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -29,7 +30,7 @@ function CreateOrder() {
     
         <div className="form-div ">
           <label className="sm:basis-40"> First Name</label>
-          <input type="text" name="customer" className="input grow  w-full" required />
+          <input type="text" name="customer" className="input grow  w-full" defaultValue={username} required />
         </div>
 
         <div className="form-div">
